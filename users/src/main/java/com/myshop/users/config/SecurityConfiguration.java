@@ -29,7 +29,7 @@ public class SecurityConfiguration {
 
     private final  JwtAuthentificationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
-    //private final LogoutHandler logoutHandler;
+    private final LogoutService logoutHandler;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         String[] WHITE_LIST_URL = new String[]{"/api/v1/auth/**"};
@@ -51,11 +51,11 @@ public class SecurityConfiguration {
 
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter , UsernamePasswordAuthenticationFilter.class)
-//                .logout(logout ->
-//                        logout.logoutUrl("/api/v1/auth/logout")
-//                                .addLogoutHandler(logoutHandler)
-//                                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
-//                )
+                .logout(logout ->
+                        logout.logoutUrl("/api/v1/auth/logout")
+                                .addLogoutHandler(logoutHandler)
+                                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+                )
         ;
 
 

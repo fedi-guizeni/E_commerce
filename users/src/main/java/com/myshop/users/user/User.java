@@ -1,5 +1,6 @@
 package com.myshop.users.user;
 
+import com.myshop.users.token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +38,9 @@ public class User implements UserDetails {
     private String password  ;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Token>  token ;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
