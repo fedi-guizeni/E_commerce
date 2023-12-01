@@ -1,5 +1,6 @@
 package com.myshop.users.demo;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +19,13 @@ public class AdminController {
     }
 
     @DeleteMapping
+    @Hidden
     public ResponseEntity<String> delete (){
         return ResponseEntity.ok("DELETE :: AdminController");
     }
 
     @PutMapping
+    @Hidden
     public ResponseEntity<String> put (){
         return ResponseEntity.ok("PUT :: AdminController");
     }
