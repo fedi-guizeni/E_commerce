@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/authDemo")
-@RequiredArgsConstructor
 public class DemoController {
 
     @GetMapping
